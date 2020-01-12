@@ -1,0 +1,33 @@
+{
+  "name": "composer-core",
+  "version": "1.0.0",
+  "description": "A basic structure to create composable classes using an injection like multiple inheritance",
+  "main": "src/composer-manager.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcastiello/composer-core.git"
+  },
+  "keywords": [
+    "Compose",
+    "Injection",
+    "Inheritance",
+    "Classes",
+    "Dynamic"
+  ],
+  "author": "Marco Castiello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcastiello/composer-core/issues"
+  },
+  "homepage": "https://github.com/mcastiello/composer-core#readme",
+  "dependencies": {
+    "memory-manager-service": "^1.1.4"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}

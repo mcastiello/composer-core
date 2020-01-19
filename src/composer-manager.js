@@ -6,7 +6,9 @@
  */
 
 import generateBaseClass from './base-class';
-import Memory from 'memory-manager-service';
+
+// Keep a reference to the memory manager.
+const memory = self.Memory;
 
 /**
  * Manager that can creates composed classes and access shared memory.
@@ -19,7 +21,7 @@ class ComposerManager {
      * @returns {MemoryManager}
      */
     get memory() {
-        return Memory;
+        return memory;
     }
 
     /**

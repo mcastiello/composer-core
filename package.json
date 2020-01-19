@@ -1,10 +1,11 @@
 {
   "name": "composer-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A basic structure to create composable classes using an injection like multiple inheritance",
-  "main": "src/composer-manager.js",
+  "main": "dist/composer-core.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,9 +25,11 @@
   },
   "homepage": "https://github.com/mcastiello/composer-core#readme",
   "dependencies": {
-    "memory-manager-service": "^1.1.4"
+    "memory-manager-service": "^1.1.5"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
+    "jest": "^24.9.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   }

@@ -5,7 +5,8 @@
  * Project: composer-core
  */
 
-import Memory from 'memory-manager-service';
+// Keep a reference to the memory manager.
+const memory = self.Memory;
 
 export default composers => {
     /**
@@ -31,9 +32,9 @@ export default composers => {
                 }
             }
 
-            Memory.create(this, data, keepAlive);
-            Memory.onDispose(this, () => {
-                if (Memory.has(this) && !Memory.get(this, "disposing")) {
+            memory.create(this, data, keepAlive);
+            memory.onDispose(this, () => {
+                if (memory.has(this) && !memory.get(this, "disposing")) {
                     this.dispose();
                 }
             });
@@ -44,7 +45,7 @@ export default composers => {
          * @returns {String}
          */
         get id() {
-            return Memory.get(this, "id");
+            return memory.get(this, "id");
         }
 
         /**
@@ -52,7 +53,7 @@ export default composers => {
          * @returns {String}
          */
         get name() {
-            return Memory.get(this, "name");
+            return memory.get(this, "name");
         }
 
         /**
@@ -60,7 +61,7 @@ export default composers => {
          * @param {String} value
          */
         set name(value) {
-            return Memory.set(this, "name", value);
+            return memory.set(this, "name", value);
         }
 
         /**
@@ -69,23 +70,23 @@ export default composers => {
          * @returns {Boolean}
          */
         instanceOf(reference) {
-            return Memory.get(this, "composers").indexOf(reference) >= 0 || this instanceof reference;
+            return memory.get(this, "composers").indexOf(reference) >= 0 || this instanceof reference;
         }
 
         /**
          * Dispose the object.
          */
         dispose() {
-            if (Memory.has(this) && !Memory.get(this, "disposing")) {
+            if (memory.has(this) && !memory.get(this, "disposing")) {
                 for (let composer of composers) {
                     if (composer.destroy) {
                         composer.destroy(this);
                     }
                 }
 
-                Memory.set(this, "disposing", true);
+                memory.set(this, "disposing", true);
 
-                Memory.dispose(this);
+                memory.dispose(this);
             }
         }
     }
